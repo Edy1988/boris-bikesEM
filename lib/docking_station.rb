@@ -2,8 +2,10 @@ require_relative 'bike'
 
 class DockingStation
   attr_reader :docked_bike
+
   def release_bike
-    Bike.new
+    raise "Station is empty" if @docked_bike == nil
+    @docked_bike
   end
 
   def dock_bike(bike)
