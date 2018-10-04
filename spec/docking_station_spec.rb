@@ -27,4 +27,12 @@ describe DockingStation do
     expect { ds.dock_bike(Bike.new)}.to raise_error("Dock station full")
   end
 
+  it "lets user set a capcity" do
+    expect(DockingStation.new(30)).to be_an_instance_of(DockingStation)
+  end
+
+  it "sets capacity to default if no capcity specified" do
+    ds = DockingStation.new
+    expect(ds.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+  end
 end
