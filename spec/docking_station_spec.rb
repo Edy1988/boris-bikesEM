@@ -9,4 +9,8 @@ describe DockingStation do
     bike = subject.release_bike
     expect(bike).to be_working
   end
+
+  it "docks the bike" do
+    expect(subject).to respond_to(:dock_bike).with(1).argument
+  end
 end
