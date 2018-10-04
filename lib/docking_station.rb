@@ -2,6 +2,8 @@ require_relative 'bike'
 
 class DockingStation
 
+  DEFAULT_CAPACITY = 20
+
   def initialize
     @docked_bikes = []
   end
@@ -18,7 +20,7 @@ class DockingStation
 
 private
   def full?
-    if @docked_bikes.length == 20
+    if @docked_bikes.length == DEFAULT_CAPACITY
       return true
     end
   end
@@ -26,6 +28,6 @@ private
   def empty?
      @docked_bikes.empty?
   end
-  
+
 
 end
