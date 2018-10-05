@@ -12,7 +12,10 @@ class DockingStation
 
   def release_bike
     raise "Station is empty" if empty?
-    @docked_bikes.pop
+    bike = next_working_bike
+    raise "The docked bikes broken" if bike.nil?
+    @docked_bikes.delete(bike)
+    bike
   end
 
   def dock_bike(bike)
@@ -22,7 +25,7 @@ class DockingStation
 
 private
   def full?
-    if @docked_bikes.length == DEFAULT_CAPACITY
+    if @docked_bikes.length == @capacity
       return true
     end
   end
@@ -31,5 +34,9 @@ private
      @docked_bikes.empty?
   end
 
-
+  def next_working_bike
+    @docked_bikes.detect do |bike|
+      bike.working?
+    end
+  end
 end
